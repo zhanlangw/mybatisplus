@@ -1,0 +1,14 @@
+spring:
+  #数据库连接相关配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.6.11:3306/mybatis?characterEncoding=utf-8
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: ASD19940526.asd
+mybatis-plus:
+  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.mybatis.plus.user
+  configuration:
+   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

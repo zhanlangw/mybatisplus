@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.plus.user.mapper.UserMapper">
+    <select id="findall" resultType="com.mybatis.plus.user.entity.User">
+        SELECT * FROM user where id in
+        <foreach collection="aaa" item="a" separator="," open="(" close=")">
+            #{a}
+        </foreach>
+        OR
+        name IN
+        <foreach collection="bbb" close=")" open="(" separator="," item="b">
+            #{b}
+        </foreach>
+    </select>
+
+    <select id="aaa" resultType="User">
+        SELECT * FROM user where (
+        id in
+        <foreach collection="aaa" item="a" separator="," open="(" close=")">
+            #{a}
+        </foreach>
+        OR
+        age_name IN
+        <foreach collection="bbb" close=")" open="(" separator="," item="b">
+            #{b}
+        </foreach>
+        ) AND id != #{id}
+    </select>
+</mapper>
